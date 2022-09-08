@@ -1,0 +1,7 @@
+Here is Explanation for the oss-performance test. We use different data models from nosqlbench (iot, keyvalue and tabular) to compare their different throughputs to latency and test on two typical cassandra hardware. One is the minimal requirement for the Cassandra, which is. Another is recommended settings for cassandra, which is 8vCPU, 32GB RAM, 400GB SSD, which corresponds to EC2 m4.2xlarge. Apart from the hardware settings, there are other differences in software settings. For the minimal requirements, the Cassandra cluster consists of 3 nodes and Vnodes is set to 16. Since the smaller RAM should choose CMS as GC algorithm, the minimal requirement GC method is set to CMS.  As for recommended hardware settings, we choose the minimal number of nodes which is 4 and 16 vNodes also. Since the RAM is 32GB so we can use the shenandoah method and set heap size to 24G.
+
+The workload we put in the cassandra for these two settings are shown in the haxx above, for the minimal requirement we have reached 30k for iot, 50k for keyvalue and 35k for tabular. And for the recommended settings, we reached 145 for iot, 255 for keyvalue and 175 for tabular.
+
+Then we run the test once a week and accumulate the results. The Hunter will extract all the results and analyze them on an annual basis. The Hunter’s job is to find the pivot points among the time serial results and calculate the change percentage of the average before and after the pivot points. 
+
+To get scheduled result, please subscribe []()
